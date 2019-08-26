@@ -1,0 +1,91 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.action,name:report_email_send_invoice"
+msgid "Send Invoice"
+msgstr "Enviar Factura"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid ", thanks for using"
+msgstr ", gracias por utilizar"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid ". All Rights Reserved."
+msgstr ". Todos los derechos reservados."
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid ". Your invoice is now available."
+msgstr ". Su factura ya esta disponible."
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "Customer:"
+msgstr "Cliente:"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "FAQ"
+msgstr "FAQ"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "Hello"
+msgstr "Hola"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "Invoice:"
+msgstr "Factura:"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "Invoices |"
+msgstr "Facturas |"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "PRIVACY STATEMENT"
+msgstr "POLÍTICA DE PRIVACIDAD"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "TERMS OF SERVICE"
+msgstr "TÉRMINOS Y CONDICIONES"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "View Invoice"
+msgstr "Descargar Factura"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "View Invoices"
+msgstr "Descargar Facturas"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "You can check out our"
+msgstr "Puedes ver nuestro"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "banner"
+msgstr ""
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "fb"
+msgstr ""
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "for more information."
+msgstr "para más información."
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "github"
+msgstr ""
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "or our"
+msgstr "o nuestro"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "support page"
+msgstr "centro de ayuda"
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "tw"
+msgstr ""

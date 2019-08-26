@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <!--
+        <record model="ir.model.button" id="invoice_send_invoice_button">
+            <field name="name">send_invoice</field>
+            <field name="string">Send Invoice</field>
+            <field name="help">Send invoice by email</field>
+            <field name="model"
+                search="[('model', '=', 'account.invoice')]"/>
+        </record>
+        -->
+
+        <record model="ir.action.report" id="report_email_send_invoice">
+            <field name="name">Send Invoice</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">account.invoice.email_send_invoice</field>
+            <field name="report">account_invoice_notification_email/email_send_invoice.html</field>
+            <field name="template_extension">html</field>
+        </record>
+
+    </data>
+</tryton>
