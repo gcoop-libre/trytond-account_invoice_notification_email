@@ -23,7 +23,7 @@ def report(request, pool):
         'model': Record.__name__,
         }
     with Transaction().set_context(language=record.company.party.lang):
-        ext, content, _, _ = Report.execute([record], data)
+        ext, content, _, _ = Report.execute([record.id], data)
     assert ext == 'pdf'
     return Response(content, 200, content_type='application/pdf')
 
