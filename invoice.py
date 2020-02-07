@@ -6,15 +6,45 @@ from urllib.parse import (
     urlsplit, parse_qsl, urlencode, urlunsplit, quote, urljoin)
 
 from trytond.config import config
+from trytond.model import fields
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 from trytond.report import Report
-from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.url import HOSTNAME
+from trytond.wizard import Wizard, StateTransition
 
 USE_SSL = bool(config.get('ssl', 'certificate'))
 URL_BASE = config.get('invoice_notification_email', 'automation_base',
     default=urlunsplit(
         ('http' + ('s' if USE_SSL else ''), HOSTNAME, '', '', '')))
+
+
+class Invoice(metaclass=PoolMeta):
+    __name__ = 'account.invoice'
+    email_sent = fields.Boolean('Email sent', states={
+        'readonly': Eval('state') != 'draft',
+        }, depends=['state'])
+
+    @staticmethod
+    def default_email_sent():
+        return False
+
+    @classmethod
+    def __setup__(cls):
+        super(Invoice, cls).__setup__()
+        cls._check_modify_exclude.append('email_sent')
+
+    @classmethod
+    def trigger_email(cls, invoices):
+        to_write = []
+        for invoice in invoices:
+            if invoice.state not in {'posted', 'paid'}:
+                continue
+            to_write.append([invoice])
+            to_write.append({'email_sent': True})
+        if to_write:
+            cls.write(*to_write)
 
 
 class EmailSendInvoice(Report):
@@ -61,3 +91,48 @@ class EmailSendInvoice(Report):
         parts = list(parts)
         parts[3] = urlencode(query)
         return urlunsplit(parts)
+
+
+class InvoiceReport(metaclass=PoolMeta):
+    __name__ = 'account.invoice'
+
+    @classmethod
+    def execute(cls, ids, data):
+        Invoice = Pool().get('account.invoice')
+
+        res = super(InvoiceReport, cls).execute(ids, data)
+        if len(ids) > 1:
+            res = (res[0], res[1], True, res[3])
+        else:
+            invoice = Invoice(ids[0])
+            report_name = 'factura'
+            periodo = ''
+            if invoice.invoice_date:
+                periodo = invoice.invoice_date.strftime("%m%Y")
+            else:
+                periodo = str(invoice.id)
+            if invoice.party:
+                report_name = '%s-%s' % (report_name, invoice.party.rec_name)
+
+            report_name += '-%s' % periodo
+
+            if invoice.number:
+                report_name = '%s-%s' % (report_name, invoice.number)
+
+            res = (res[0], res[1], res[2], report_name)
+        return res
+
+
+class InvoiceTriggerEmail(Wizard):
+    'Invoice Trigger Email'
+    __name__ = 'account.invoice.trigger_email'
+    start_state = 'trigger_email'
+    trigger_email = StateTransition()
+
+    def transition_trigger_email(self):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        invoices = Invoice.browse(Transaction().context['active_ids'])
+        if invoices:
+            Invoice.trigger_email(invoices)
+        return 'end'

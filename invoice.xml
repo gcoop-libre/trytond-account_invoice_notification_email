@@ -3,16 +3,16 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-
-        <!--
-        <record model="ir.model.button" id="invoice_send_invoice_button">
-            <field name="name">send_invoice</field>
-            <field name="string">Send Invoice</field>
-            <field name="help">Send invoice by email</field>
-            <field name="model"
-                search="[('model', '=', 'account.invoice')]"/>
+        <record model="ir.action.wizard" id="act_trigger_email">
+            <field name="name">Trigger Email</field>
+            <field name="wiz_name">account.invoice.trigger_email</field>
+            <field name="model">account.invoice</field>
         </record>
-        -->
+        <record model="ir.action.keyword" id="act_trigger_email_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.invoice,-1</field>
+            <field name="action" ref="act_trigger_email"/>
+        </record>
 
         <record model="ir.action.report" id="report_email_send_invoice">
             <field name="name">Send Invoice</field>
