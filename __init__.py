@@ -11,5 +11,12 @@ __all__ = ['register', 'routes']
 
 def register():
     Pool.register(
+        invoice.Invoice,
+        module='account_invoice_notification_email', type_='model')
+    Pool.register(
+        invoice.InvoiceTriggerEmail,
+        module='account_invoice_notification_email', type_='wizard')
+    Pool.register(
+        invoice.InvoiceReport,
         invoice.EmailSendInvoice,
         module='account_invoice_notification_email', type_='report')
