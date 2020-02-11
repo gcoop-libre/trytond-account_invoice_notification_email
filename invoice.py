@@ -22,9 +22,7 @@ URL_BASE = config.get('invoice_notification_email', 'automation_base',
 
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
-    email_sent = fields.Boolean('Email sent', states={
-        'readonly': Eval('state') != 'draft',
-        }, depends=['state'])
+    email_sent = fields.Boolean('Email sent', readonly=True)
 
     @staticmethod
     def default_email_sent():
@@ -37,12 +35,17 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     def trigger_email(cls, invoices):
+        cls._trigger_email(invoices, False)
+        cls._trigger_email(invoices, True)
+
+    @classmethod
+    def _trigger_email(cls, invoices, boolean):
         to_write = []
         for invoice in invoices:
             if invoice.state not in {'posted', 'paid'}:
                 continue
             to_write.append([invoice])
-            to_write.append({'email_sent': True})
+            to_write.append({'email_sent': boolean})
         if to_write:
             cls.write(*to_write)
 
