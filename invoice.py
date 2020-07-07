@@ -76,7 +76,7 @@ class EmailSendInvoice(Report):
         Company = Pool().get('company.company')
         company = Company(Transaction().context.get('company'))
         res = super(EmailSendInvoice, cls).execute(ids, data)
-        title = '[%s] te acerca tu factura' % company.rec_name
+        title = '[%s] te acerca tu comprobante' % company.rec_name
         return res[0], res[1], res[2], title
 
     @classmethod
@@ -108,7 +108,7 @@ class InvoiceReport(metaclass=PoolMeta):
             res = (res[0], res[1], True, res[3])
         else:
             invoice = Invoice(ids[0])
-            report_name = 'factura'
+            report_name = 'comprobante'
             periodo = ''
             if invoice.invoice_date:
                 periodo = invoice.invoice_date.strftime("%m%Y")

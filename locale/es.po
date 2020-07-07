@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "model:ir.action,name:report_email_send_invoice"
 msgid "Send Invoice"
-msgstr "Enviar Factura"
+msgstr "Enviar Comprobante"
 
 msgctxt "report:account.invoice.email_send_invoice:"
 msgid ", thanks for using"
@@ -15,8 +15,12 @@ msgid ". All Rights Reserved."
 msgstr ". Todos los derechos reservados."
 
 msgctxt "report:account.invoice.email_send_invoice:"
-msgid ". Your invoice is now available."
-msgstr ". Su factura ya esta disponible."
+msgid ". Your invoice "
+msgstr ". Su comprobante "
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid " is now available."
+msgstr " ya esta disponible."
 
 msgctxt "report:account.invoice.email_send_invoice:"
 msgid "Customer:"
@@ -32,15 +36,15 @@ msgstr "Hola"
 
 msgctxt "report:account.invoice.email_send_invoice:"
 msgid "Invoice"
-msgstr "Factura"
+msgstr "Comprobante"
 
 msgctxt "report:account.invoice.email_send_invoice:"
 msgid "Invoice:"
-msgstr "Factura:"
+msgstr "Comprobante:"
 
 msgctxt "report:account.invoice.email_send_invoice:"
 msgid "Invoices |"
-msgstr "Facturas |"
+msgstr "Comprobantes |"
 
 msgctxt "report:account.invoice.email_send_invoice:"
 msgid "PRIVACY STATEMENT"
@@ -52,11 +56,11 @@ msgstr "TÉRMINOS Y CONDICIONES"
 
 msgctxt "report:account.invoice.email_send_invoice:"
 msgid "View Invoice"
-msgstr "Descargar Factura"
+msgstr "Descargar Comprobante"
 
 msgctxt "report:account.invoice.email_send_invoice:"
 msgid "View Invoices"
-msgstr "Descargar Facturas"
+msgstr "Descargar Comprobantes"
 
 msgctxt "report:account.invoice.email_send_invoice:"
 msgid "You can check out our"
