@@ -5,14 +5,13 @@ import base64
 from urllib.parse import (
     urlsplit, parse_qsl, urlencode, urlunsplit, quote, urljoin)
 
-from trytond.config import config
 from trytond.model import fields
-from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
-from trytond.report import Report
-from trytond.transaction import Transaction
-from trytond.url import HOSTNAME
 from trytond.wizard import Wizard, StateTransition
+from trytond.report import Report
+from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
+from trytond.config import config
+from trytond.url import HOSTNAME
 
 USE_SSL = bool(config.get('ssl', 'certificate'))
 URL_BASE = config.get('invoice_notification_email', 'automation_base',
@@ -22,6 +21,7 @@ URL_BASE = config.get('invoice_notification_email', 'automation_base',
 
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
+
     email_sent = fields.Boolean('Email sent', readonly=True)
 
     @staticmethod
@@ -31,7 +31,7 @@ class Invoice(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls._check_modify_exclude.append('email_sent')
+        cls._check_modify_exclude.update({'email_sent'})
 
     @classmethod
     def trigger_email(cls, invoices):
@@ -129,6 +129,7 @@ class InvoiceReport(metaclass=PoolMeta):
 class InvoiceTriggerEmail(Wizard):
     'Invoice Trigger Email'
     __name__ = 'account.invoice.trigger_email'
+
     start_state = 'trigger_email'
     trigger_email = StateTransition()
 

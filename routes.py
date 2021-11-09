@@ -5,6 +5,7 @@ from werkzeug.wrappers import Response
 
 from trytond.transaction import Transaction
 from trytond.protocols.wrappers import with_pool, with_transaction
+from trytond.tools import file_open
 from trytond.wsgi import app
 
 
