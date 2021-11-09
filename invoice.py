@@ -30,7 +30,7 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Invoice, cls).__setup__()
+        super().__setup__()
         cls._check_modify_exclude.append('email_sent')
 
     @classmethod
@@ -75,7 +75,7 @@ class EmailSendInvoice(Report):
     def execute(cls, ids, data):
         Company = Pool().get('company.company')
         company = Company(Transaction().context.get('company'))
-        res = super(EmailSendInvoice, cls).execute(ids, data)
+        res = super().execute(ids, data)
         title = '[%s] te acerca tu comprobante' % company.rec_name
         return res[0], res[1], res[2], title
 
@@ -103,7 +103,7 @@ class InvoiceReport(metaclass=PoolMeta):
     def execute(cls, ids, data):
         Invoice = Pool().get('account.invoice')
 
-        res = super(InvoiceReport, cls).execute(ids, data)
+        res = super().execute(ids, data)
         if len(ids) > 1:
             res = (res[0], res[1], True, res[3])
         else:
