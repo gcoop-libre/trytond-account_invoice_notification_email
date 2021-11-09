@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
-this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+
+<!-- Invoice -->
+
         <record model="ir.ui.view" id="invoice_view_form">
             <field name="model">account.invoice</field>
             <field name="inherit" ref="account_invoice.invoice_view_form"/>
             <field name="name">invoice_form</field>
         </record>
+
+<!-- Trigger Email -->
 
         <record model="ir.action.wizard" id="act_trigger_email">
             <field name="name">Trigger Email</field>
@@ -19,6 +22,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.invoice,-1</field>
             <field name="action" ref="act_trigger_email"/>
         </record>
+
+<!-- Send Invoice -->
 
         <record model="ir.action.report" id="report_email_send_invoice">
             <field name="name">Send Invoice</field>
