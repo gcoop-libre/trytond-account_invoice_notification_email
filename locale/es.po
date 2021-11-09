@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.invoice,email_sent:"
+msgid "Email sent"
+msgstr "Email enviado"
+
+msgctxt "model:ir.action,name:act_trigger_email"
+msgid "Trigger Email"
+msgstr ""
+
 msgctxt "model:ir.action,name:report_email_send_invoice"
 msgid "Send Invoice"
 msgstr "Enviar Comprobante"
@@ -15,12 +23,8 @@ msgid ". All Rights Reserved."
 msgstr ". Todos los derechos reservados."
 
 msgctxt "report:account.invoice.email_send_invoice:"
-msgid ". Your invoice "
-msgstr ". Su comprobante "
-
-msgctxt "report:account.invoice.email_send_invoice:"
-msgid " is now available."
-msgstr " ya esta disponible."
+msgid ". Your invoice {"
+msgstr ". Su comprobante {"
 
 msgctxt "report:account.invoice.email_send_invoice:"
 msgid "Customer:"
@@ -93,3 +97,7 @@ msgstr "centro de ayuda"
 msgctxt "report:account.invoice.email_send_invoice:"
 msgid "tw"
 msgstr ""
+
+msgctxt "report:account.invoice.email_send_invoice:"
+msgid "} is now available."
+msgstr "} ya esta disponible."
