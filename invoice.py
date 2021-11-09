@@ -54,8 +54,8 @@ class EmailSendInvoice(Report):
     __name__ = 'account.invoice.email_send_invoice'
 
     @classmethod
-    def get_context(cls, records, data):
-        context = super(EmailSendInvoice, cls).get_context(records, data)
+    def get_context(cls, records, header, data):
+        context = super().get_context(records, header, data)
         context['tw'] = "#"
         context['fb'] = "#"
         context['github'] = "#"
